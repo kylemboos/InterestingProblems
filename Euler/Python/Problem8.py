@@ -1,4 +1,6 @@
 '''
+Problem 8:
+
 Find the greatest product of five consecutive digits in the 1000-digit number.
 
 73167176531330624919225119674426574742355349194934
@@ -25,10 +27,9 @@ Find the greatest product of five consecutive digits in the 1000-digit number.
 
 #written by Kyle Boos
 
-#thoughts:  we can do this in one pass of the number
+#thoughts:  we can do this in one pass of the number O(n)
 #			by using a list of length 5 and keeping track
 #			of the biggest current product and shifting the list over
-#			lets do it.
 
 #helpers for multiplying the buffer and shifting the list
 def multBuffer(buffer):
