@@ -25,7 +25,12 @@ Find the greatest product of five consecutive digits in the 1000-digit number.
 
 #written by Kyle Boos
 
-#So we are going to need a buffer of length 5 and a scanner for the input string
+#thoughts:  we can do this in one pass of the number
+#			by using a list of length 5 and keeping track
+#			of the biggest current product and shifting the list over
+#			lets do it.
+
+#helpers for multiplying the buffer and shifting the list
 def multBuffer(buffer):
     total = 1
     for i in buffer:
@@ -35,7 +40,7 @@ def multBuffer(buffer):
 def shiftBuffer(i, buffer):
     return buffer[1:] + [i]
 
-
+#input
 bigNum =('73167176531330624919225119674426574742355349194934'
 '96983520312774506326239578318016984801869478851843'
 '85861560789112949495459501737958331952853208805511'
@@ -56,19 +61,26 @@ bigNum =('73167176531330624919225119674426574742355349194934'
 '84580156166097919133875499200524063689912560717606'
 '05886116467109405077541002256983155200055935729725'
 '71636269561882670428252483600823257530420752963450')
-listNum = map(int, list(bigNum))
 
+#globals
 maxValue = 0
-
 buffer= [0]*5
+index = 0
 
-init = 0
-for number in listNum[:5]
-    buffer[init] = number
-    init += 1
-
-for number in listNum[5:
-    shiftBuffer(number)
-    temp = multBuffer(buffer)
-    if temp > maxValue
-        maxValue = temp
+#look at each character in the string (number)
+#if its the beginning, just fill the buffer
+#otherwise shift in the next number to the buffer and compute.
+for char in bigNum:
+	number = int(char)
+	if index in range(0,5):
+		buffer[index] = number
+		if index is 4:
+			maxValue = multBuffer(buffer)
+	else:
+		buffer = shiftBuffer(number, buffer)
+		temp = multBuffer(buffer)
+		if temp > maxValue:
+			maxValue = temp
+	index+=1
+	
+print maxValue
