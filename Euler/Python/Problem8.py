@@ -26,9 +26,17 @@ Find the greatest product of five consecutive digits in the 1000-digit number.
 #written by Kyle Boos
 
 #So we are going to need a buffer of length 5 and a scanner for the input string
+def multBuffer(buffer):
+    total = 1
+    for i in buffer:
+       total *= i
+    return total
 
-bigNum = 
-('73167176531330624919225119674426574742355349194934'
+def shiftBuffer(i, buffer):
+    return buffer[1:] + [i]
+
+
+bigNum =('73167176531330624919225119674426574742355349194934'
 '96983520312774506326239578318016984801869478851843'
 '85861560789112949495459501737958331952853208805511'
 '12540698747158523863050715693290963295227443043557'
@@ -48,8 +56,19 @@ bigNum =
 '84580156166097919133875499200524063689912560717606'
 '05886116467109405077541002256983155200055935729725'
 '71636269561882670428252483600823257530420752963450')
+listNum = map(int, list(bigNum))
 
-buffer = [0]*5
+maxValue = 0
 
-for number in bigNum
+buffer= [0]*5
 
+init = 0
+for number in listNum[:5]
+    buffer[init] = number
+    init += 1
+
+for number in listNum[5:
+    shiftBuffer(number)
+    temp = multBuffer(buffer)
+    if temp > maxValue
+        maxValue = temp
