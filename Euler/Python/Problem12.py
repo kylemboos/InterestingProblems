@@ -26,48 +26,30 @@ What is the value of the first triangle number to have over five hundred divisor
 thoughts: first i'll go ahead and code up the brute force solution to get a feel for the problem.
 		  so the problem is difficult because of the amount of work we have to do to look through every potential divisor.	
 
-		  A different solution that is still very simple is rather than checking the mod of each number up to n,
+		  A different solution below that is still very simple is rather than checking the mod of each number up to n,
 		  we can actually divide the number and see if the result is an integer and add that number to the list as well.
-		  This way we need to do sqrt(n) work rather than n for each triangle number. This answer is not optimal but is achieved in less than 30 seconds
+		  This way we need to do sqrt(n) work rather than n for each triangle number. This answer is not optimal but is achieved in less than 10 seconds
 		  and is how I solved the problem on Euler.
 		  
-		  The better way to solve the problem is to generate all the factors by first finding all of the prime factors of the number using integer factorization.
+		  
+		  Another interesting thought.. what if we kept a map that stored the triangle number to its number of factors and only calculated the factors from the last highest triangle number
+		  if there is one that factors into the current triangle number.
 '''
 import math
 
 def getDivisors(n):
-	divisors = [1]
-	for i in range(2,n+1):
+	divisors = 2
+	for i in range(2,int(math.sqrt(n))):
 		if n % i == 0:
-			divisors.append(i)	
-	return len(divisors)
+			divisors+=2
+	return divisors
 	
-'''triangle = 1
+triangle = 1
 count = 2
 while True:
 	if getDivisors(triangle) >= 500:
 		print triangle
 		break
 	triangle+=count
-	count+=1'''
+	count+=1
 	
-#----------------------------------------------#
-
-
-def getDivisorsFloat(n):
-	divisors = [1,int(n)]
-	for f in range(2,int(math.sqrt(n))):
-		k = n/(float(f))
-		if k.is_integer() == True:
-			divisors.append(f)
-			divisors.append(int(k))
-	return len(divisors)
-	
-triangle = 1.0
-count = 2.0
-while True:
-	if getDivisorsFloat(triangle) >= 500:
-		print triangle
-		break
-	triangle+=count
-	count+=1.0
