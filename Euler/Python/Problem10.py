@@ -1,15 +1,16 @@
 '''
+Problem 10:
 
 The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
 
 Find the sum of all the primes below two million.
-
 '''
+
+
 #written by Kyle Boos
 
 '''thoughts: The straightforward way to check for primality is to ensure that for all numbers
-			 from 2 to n, n % m is not equal to 0 or else the number would not be prime.
-			 
+			 from 2 to n, n % m is not equal to 0 or else the number would not be prime.			 
 '''
 
 # written by Kyle Boos
