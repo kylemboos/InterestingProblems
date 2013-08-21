@@ -20,7 +20,7 @@ Which starting number, under one million, produces the longest chain?
 			.
 			.
 			.
-			OMG SO BEAUTIFUL. Brute force takes 73 seconds to complete. Dynamic soltion takes 6. SIX. SIIIIIIIIIIIIIHHHHIIIIIIIX
+			OMG SO BEAUTIFUL. Brute force takes 73 seconds to complete. Dynamic soltion takes 6. SIX. SIIIIIIIIIIIIIIIIIX
 '''
 
 #written by: Kyle Boos
