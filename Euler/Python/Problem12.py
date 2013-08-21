@@ -92,7 +92,7 @@ triangle = 1
 count = 2
 
 while True:
-	if getDivisors(triangle) >= 5:
+	if getDivisors(triangle) >= 500:
 		print triangle
 		break
 	triangle+=count
