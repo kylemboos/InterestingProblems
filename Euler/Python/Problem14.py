@@ -21,13 +21,14 @@ Which starting number, under one million, produces the longest chain?
 			.
 			.
 			OMG SO BEAUTIFUL. Brute force takes 73 seconds to complete. Dynamic soltion takes 6. SIX. SIIIIIIIIIIIIIIIIIX
+			Since the solution is O(n) now 2 million takes 12 seconnds, 7 million 42 seconds etc..
 '''
 
 #written by: Kyle Boos
 import time
 
 def collatz(n):
-	if n % 2 == 0:
+	if n & 1 == 0:
 		n = n/2
 	else:
 		n = (3*n)+1
