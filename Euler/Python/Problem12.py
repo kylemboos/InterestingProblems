@@ -32,8 +32,14 @@ thoughts: first i'll go ahead and code up the brute force solution to get a feel
 		  and is how I solved the problem on Euler.
 		  
 		  
-		  Another interesting thought.. what if we kept a map that stored the triangle number to its number of factors and only calculated the factors from the last highest triangle number
-		  if there is one that factors into the current triangle number.
+		  Another interesting thought.. what if we kept a map that stored the triangle number to its list of factors and only calculated the factors from the last highest triangle number
+		  if there is one that factors into the current triangle number. Dynamic Programming!
+		  .
+		  .
+		  .
+		  Well that didn't work. You start skipping factors for larger numbers right away. since 6 picks up the factors of 3 (1,3) it misses 2 since you start at 3.
+		  I thought a dynamic programming solution would be interesting but I don't think it wokrs in the case of factors like in this problem.
+		  I'll leave the code but like I said it is not an actual solution.
 '''
 import math
 
@@ -43,13 +49,51 @@ def getDivisors(n):
 		if n % i == 0:
 			divisors+=2
 	return divisors
-	
+
+def withMap(n, map):
+	if n == 1:
+		map[1] = [1]
+		return map
+		
+	divisors = []	
+	start = 2
+	for k in sorted(map.keys(),reverse=True):
+		if n % k == 0:
+			for d in map[k]:
+				divisors.append(d)
+			start = k
+			break
+	if start == 1:
+		start = 2
+	for i in range(start,int(math.sqrt(n))):
+		if n % i == 0:
+			divisors.append(i)
+			divisors.append(n/i)
+	divisors.append(n)
+	map[n] = divisors
+	return map
+
+#Solution that attempts to use the previous factors dynamically... fail.
+'''map = {}
+
 triangle = 1
 count = 2
+
 while True:
-	if getDivisors(triangle) >= 500:
+	map = withMap(triangle, map)
+	if len(map[triangle]) >= 7:
+		print triangle
+		break
+	triangle+=count
+	count+=1'''
+
+#For just finding the number of factors	
+triangle = 1
+count = 2
+
+while True:
+	if getDivisors(triangle) >= 5:
 		print triangle
 		break
 	triangle+=count
 	count+=1
-	
