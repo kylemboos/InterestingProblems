@@ -50,7 +50,7 @@ def collatzDynamic(n, map, chain, count):
 		
 
 #Dynamic Solution!
-start = time.clock()
+'''start = time.clock()
 map = {}
 longest = 0
 largest = 13
@@ -63,12 +63,12 @@ for i in range(13,1000001):
 		largest = i	
 end = time.clock()
 print largest , (end-start)
-
+'''
 #Brute Force
-'''start = time.clock()
+start = time.clock()
 longest = 0
 largest = 13
-for i in range(13,1000001):
+for i in range(13,2000001):
 	n = i
 	chain = [n]
 	while n != 1:
@@ -78,4 +78,4 @@ for i in range(13,1000001):
 		longest = len(chain)
 		largest = i
 end = time.clock()
-print largest, (end-start)'''
+print largest, (end-start)
